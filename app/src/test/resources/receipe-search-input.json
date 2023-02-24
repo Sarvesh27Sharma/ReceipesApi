@@ -1,0 +1,30 @@
+{
+  "dataOption":"all",
+  "receipeSearchCriteria":[
+    {
+      "filterKey":"isVegetarian",
+      "operation":"eq",
+      "value":true
+    },
+    {
+      "filterKey":"ingredients",
+      "operation":"cn",
+      "value":"chilli"
+    },
+    {
+      "filterKey":"ingredients",
+      "operation":"nc",
+      "value":"salmon"
+    },
+    {
+      "filterKey":"instructions",
+      "operation":"cn",
+      "value":"good"
+    },
+    {
+      "filterKey":"serves",
+      "operation":"gt",
+      "value":"2"
+    }
+  ]
+}

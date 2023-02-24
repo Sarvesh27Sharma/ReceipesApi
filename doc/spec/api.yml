@@ -1,0 +1,216 @@
+openapi: 3.0.3
+info:
+  title: Swagger Receipes - OpenAPI 3.0
+  description: |-
+    Api to create, update, read and delete receipes.
+    Api also provide another end point to search based on parameters
+  version: v1
+  contact:
+    email: sarvesh27sharma@gamil.com
+servers:
+  - url: https://localhost:8080/api/v1
+tags:
+  - name: receipe
+    description: Operations about receipes
+paths:
+  /receipe:
+    post:
+      tags:
+        - receipe
+      summary: Add a new receipe
+      description: Add a new receipe
+      operationId: addReceipe
+      requestBody:
+        description: Created receipe
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Receipe'
+      responses:
+        default:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Receipe'
+        '400':
+          description: Invalid ID supplied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponses'
+        '404':
+          description: Receipe not found
+  /receipe/{name}:
+    get:
+      tags:
+        - receipe
+      summary: Get a receipe by name
+      description: ''
+      operationId: getReceipeByName
+      parameters:
+        - name: name
+          in: path
+          description: 'unique name of the receipe'
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Receipe'
+        '400':
+          description: Invalid name supplied
+        '404':
+          description: Receipe not found
+    put:
+      tags:
+        - receipe
+      summary: Update an existing receipe
+      description: Update an existing receipe.
+      operationId: updateReceipe
+      parameters:
+        - name: name
+          in: path
+          description: name that need to be deleted
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Update an existent receipe
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Receipe'
+      responses:
+        default:
+          description: successful operation
+    delete:
+      tags:
+        - receipe
+      summary: Delete a receipe
+      description: Delete a receipe
+      operationId: deleteReceipe
+      parameters:
+        - name: name
+          in: path
+          description: 'unique name of the receipe'
+          required: true
+          schema:
+            type: string
+      responses:
+        '400':
+          description: Invalid name supplied
+        '404':
+          description: Receipe not found
+  /receipe/search:
+    post:
+      tags:
+        - receipe search
+      summary: Create a new search for receipes
+      description: Create a new search for receipes
+      operationId: searchReceipes
+      requestBody:
+        description: Created receipe search
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Receipes'
+      responses:
+        default:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Receipe'
+components:
+  schemas:
+    Receipes:
+        type: object
+        properties:
+          receipes:
+            type: array
+            description: list of error responses
+            items:
+              $ref: '#/components/schemas/Receipe'
+    Receipe:
+      type: object
+      required:
+        - name
+        - isVegetarian
+        - serves
+      properties:
+        name:
+          type: string
+          description: name of the receipe
+          example: shahi-panner
+        serves:
+          type: integer
+          description: Number of persons that can be served.
+          format: int64
+          example: 1
+        ingredients:
+          type: array
+          description: list of ingredients needed for the receipe
+          items:
+            type: string
+        instructions:
+          type: array
+          description: list of instruction needed for the receipe
+          items:
+            type: string
+        isVegetarian:
+          type: boolean
+          description: TRUE if the receipe is vegetarian
+    ReceipeSearch:
+      type: object
+      properties:
+        dataOption:
+          type: string
+          description: data options
+          example: all
+        receipeSearchCriterias:
+          type: array
+          description: list of search criterias
+          items:
+            $ref: '#/components/schemas/ReceipeSearchCriteria'
+    ReceipeSearchCriteria:
+      type: object
+      properties:
+        filterKey:
+          type: string
+          description: name of the parameter from receipe to be filtered on
+          example: isVegetarian
+        value:
+          type: string
+          description: value to be filtered for
+          example: true
+        operation:
+          type: string
+          description: type of filters such as equal, not equal, contents, not-contents, greater than or less than
+          example: equal
+    ErrorResponses:
+      type: object
+      properties:
+        errors:
+          type: array
+          description: list of error responses
+          items:
+            $ref: '#/components/schemas/ErrorResponse'
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          description: error code, for example INVALID_FIELD
+          example: INVALID_FIELD
+        message:
+          type: string
+          description: user friendly message that describes the error
+          example: 'Field: [name] is required'
+
+
+

@@ -1,0 +1,12 @@
+{
+  "name":"shahi-paneer",
+  "isVegetarian":true,
+  "ingredients":[
+    "chilli",
+    "paneer"
+  ],
+  "instructions":[
+    "good"
+  ],
+  "serves":5
+}

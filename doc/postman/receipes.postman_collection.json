@@ -1,0 +1,130 @@
+{
+	"info": {
+		"_postman_id": "6cd7daad-bc9a-4365-ba04-5f4458859539",
+		"name": "receipes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15880448"
+	},
+	"item": [
+		{
+			"name": "Get all receipes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/receipe",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"receipe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get receipe with name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/receipe/potatoes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"receipe",
+						"potatoes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add a new receipe",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/receipe",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"receipe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add a new receipe search",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/receipe/search",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"receipe",
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete an existing receipe",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Update an existing receipe",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/receipe/potatoes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"receipe",
+						"potatoes"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
