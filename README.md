@@ -24,4 +24,5 @@ mvn install
 ## Improvements
 * Add more unit and integration tests. Due to lack of time, all test cases are not covered/created.
 * Ideally a more robust solution perhaps elastic search could be used to provide search/filter capabilities.
+* Rest end point can be made asynchronous
 
